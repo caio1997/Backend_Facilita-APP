@@ -40,9 +40,6 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.withType(Jar::class) {
-	manifest {
-		attributes["Main-Class"] = "FacilitaBackendApplication"
-	}
+springBoot {
+	mainClass.set( "puc.facilita.facilitabackend.FacilitaBackendApplication")
 }
-
