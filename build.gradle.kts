@@ -42,7 +42,7 @@ tasks.withType<Test> {
 
 tasks.withType(Jar::class) {
 	manifest {
-		attributes["Main-Class"] = "puc.facilita.facilitabackend.FacilitaBackendApplication"
+		attributes["Main-Class"] = "FacilitaBackendApplication"
 	}
 }
 
