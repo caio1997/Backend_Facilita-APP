@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
 	kotlin("plugin.jpa") version "1.6.21"
+	id("java")
 }
 
 group = "puc.facilita"
@@ -39,4 +40,9 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+tasks.withType(Jar::class) {
+	manifest {
+		attributes["Main-Class"] = "puc.facilita.facilitabackend.FacilitaBackendApplication"
+	}
+}
 
