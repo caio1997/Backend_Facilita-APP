@@ -38,11 +38,11 @@ class StartApplication(
 
         val anuncios = mutableListOf<AnuncioEntity>()
         val anuncio01 = AnuncioEntity(null, "Anuncio 01", "Anuncio Descrição 01", "8GB RAM - 240SSD", null, null, BigDecimal.valueOf(2500), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario01)
-        val anuncio02 = AnuncioEntity(null, "Anuncio 02", "Anuncio Descrição 02", null, 55.00, null, BigDecimal.valueOf(3200), TiposDeUso.NOVO, TiposDeProdutos.MONITOR_TV, LocalDateTime.now(), null, findUsuario01)
-        val anuncio03 = AnuncioEntity(null, "Anuncio 03", "Anuncio Descrição 03", null, 29.00, null, BigDecimal.valueOf(600), TiposDeUso.USADO, TiposDeProdutos.MONITOR_TV, LocalDateTime.now(), null, findUsuario02)
-        val anuncio04 = AnuncioEntity(null, "Anuncio 04", "Anuncio Descrição 04", "16GB RAM - 1TB", null, null, BigDecimal.valueOf(5600), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario03)
+        val anuncio02 = AnuncioEntity(null, "Anuncio 02", "Anuncio Descrição 02", "8GB RAM", null, null, BigDecimal.valueOf(3200), TiposDeUso.NOVO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, findUsuario01)
+        val anuncio03 = AnuncioEntity(null, "Anuncio 03", "Anuncio Descrição 03", "2GB RAM - 32Gb", null, null, BigDecimal.valueOf(600), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, findUsuario02)
+        val anuncio04 = AnuncioEntity(null, "Anuncio 04", "Anuncio Descrição 04", "16GB RAM - 1TB SSD", null, null, BigDecimal.valueOf(5600), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario03)
         val anuncio05 = AnuncioEntity(null, "Anuncio 05", "Anuncio Descrição 05", "4GB RAM - 128GB", null, null, BigDecimal.valueOf(3500), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, findUsuario03)
-        val anuncio06 = AnuncioEntity(null, "Anuncio 06", "Anuncio Descrição 05", null, null, "Vendo produto geral", BigDecimal.valueOf(1240), TiposDeUso.USADO, TiposDeProdutos.GERAL, LocalDateTime.now(), null, findUsuario03)
+        val anuncio06 = AnuncioEntity(null, "Anuncio 06", "Anuncio Descrição 05", "4GB RAM - 1TB", null, null, BigDecimal.valueOf(1240), TiposDeUso.USADO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario03)
 
         val existsAnuncio01 = anuncioRepository.findByNomeAndUsuario("Anuncio 01", findUsuario01)
         if(!existsAnuncio01.isPresent) anuncios.add(anuncio01)
