@@ -74,9 +74,9 @@ class UsuarioService(
 
     fun login(email: String, senha: String): UsuarioDTO? {
         val response = usuarioRepository.findByEmail(email)
-        if(!response.isPresent) return null
+        if(!response.isPresent) return UsuarioDTO()
         val correct =  response.get().senha == senha && response.get().status == StatusCliente.ATIVO
-        if(!correct) return null
+        if(!correct) return UsuarioDTO()
         return UsuarioDTO(id = response.get().id!!, localizacao = response.get().localizacao)
     }
 
