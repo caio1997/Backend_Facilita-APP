@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service
 import puc.facilita.facilitabackend.entity.AnuncioEntity
 import puc.facilita.facilitabackend.entity.FotoEntity
 import puc.facilita.facilitabackend.entity.UsuarioEntity
+import puc.facilita.facilitabackend.entity.dto.UsuarioDTO
 import puc.facilita.facilitabackend.entity.enum.StatusCliente
 import puc.facilita.facilitabackend.entity.enum.TipoDeFoto
 import puc.facilita.facilitabackend.repository.UsuarioRepository
@@ -71,10 +72,12 @@ class UsuarioService(
         return usuarioRepository.save(usuario)
     }
 
-    fun login(email: String, senha: String): Boolean {
+    fun login(email: String, senha: String): UsuarioDTO? {
         val response = usuarioRepository.findByEmail(email)
-        if(!response.isPresent) return false
-        return (response.get().senha == senha && response.get().status == StatusCliente.ATIVO)
+        if(!response.isPresent) return null
+        val correct =  response.get().senha == senha && response.get().status == StatusCliente.ATIVO
+        if(!correct) return null
+        return UsuarioDTO(id = response.get().id!!, localizacao = response.get().localizacao)
     }
 
     fun update(id: Int, usuario: UsuarioEntity): UsuarioEntity? {

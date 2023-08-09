@@ -5,6 +5,7 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import puc.facilita.facilitabackend.entity.UsuarioEntity
+import puc.facilita.facilitabackend.entity.dto.UsuarioDTO
 import puc.facilita.facilitabackend.service.UsuarioService
 import java.util.*
 
@@ -49,7 +50,7 @@ class UsuarioController(private val usuarioService: UsuarioService) {
     }
 
     @PostMapping("/login")
-    fun login(@RequestHeader email: String, @RequestHeader senha: String): ResponseEntity<Boolean> {
+    fun login(@RequestHeader email: String, @RequestHeader senha: String): ResponseEntity<UsuarioDTO> {
         val responseSave = usuarioService.login(email, senha)
         return ResponseEntity.ok().body(responseSave)
     }
