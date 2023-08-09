@@ -30,6 +30,12 @@ class StartApplication(
         if(!usuario02Exists.isPresent) usuarios.add(usuarioO2)
         val usuario03Exists = usuarioRepository.findByEmail("usuario_teste_03@hotmail.com")
         if(!usuario03Exists.isPresent) usuarios.add(usuarioO3)
+
+        // TESTE
+        val usuarioTEST = UsuarioEntity(null, "1", "1", "1", "(31)99155-1010", "Belo Horizonte - MG", LocalDateTime.now(), StatusCliente.ATIVO, null)
+        val usuarioTESTExists = usuarioRepository.findByEmail("1")
+        if(!usuarioTESTExists.isPresent) usuarios.add(usuarioTEST)
+
         usuarioRepository.saveAll(usuarios)
 
         val findUsuario01 = usuarioRepository.findByEmail("usuario_teste_01@hotmail.com").get()
