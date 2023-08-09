@@ -39,7 +39,3 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
-
-springBoot {
-	mainClass.set( "puc.facilita.facilitabackend.FacilitaBackendApplication")
-}
