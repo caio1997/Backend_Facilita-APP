@@ -3,15 +3,7 @@ package puc.facilita.facilitabackend.controller
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import puc.facilita.facilitabackend.entity.AnuncioEntity
 import puc.facilita.facilitabackend.entity.UsuarioEntity
 import puc.facilita.facilitabackend.service.AnuncioService
@@ -57,9 +49,21 @@ class AnuncioController(private val anuncioService: AnuncioService) {
         return ResponseEntity.ok().body(response)
     }
 
+    @GetMapping("/findByUsuario/{id}")
+    fun findAllByUsuario(@PathVariable("id") idUsuario: Int): ResponseEntity<List<AnuncioEntity>> {
+        val response = anuncioService.findAllAnunciosByIdCliente(idUsuario)
+        return ResponseEntity.ok().body(response)
+    }
+
     @GetMapping("/findByLocalizacao")
     fun findByLocalizacao(@RequestParam("localizacao") localizacao: String): ResponseEntity<List<AnuncioEntity>> {
         val response = anuncioService.findByLocalizacao(localizacao)
+        return ResponseEntity.ok().body(response)
+    }
+
+    @GetMapping("/notMe/findByLocalizacao")
+    fun findByLocalizacaoNotMe(@RequestParam("localizacao") localizacao: String, @RequestHeader id: Int): ResponseEntity<List<AnuncioEntity>> {
+        val response = anuncioService.findByLocalizacaoNotMe(localizacao, id)
         return ResponseEntity.ok().body(response)
     }
 

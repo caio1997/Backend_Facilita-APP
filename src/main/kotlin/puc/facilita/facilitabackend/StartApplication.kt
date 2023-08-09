@@ -48,7 +48,10 @@ class StartApplication(
         val anuncio03 = AnuncioEntity(null, "Anuncio 03", "Anuncio Descrição 03", "2GB RAM - 32Gb", null, null, BigDecimal.valueOf(600), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, findUsuario02)
         val anuncio04 = AnuncioEntity(null, "Anuncio 04", "Anuncio Descrição 04", "16GB RAM - 1TB SSD", null, null, BigDecimal.valueOf(5600), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario03)
         val anuncio05 = AnuncioEntity(null, "Anuncio 05", "Anuncio Descrição 05", "4GB RAM - 128GB", null, null, BigDecimal.valueOf(3500), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, findUsuario03)
-        val anuncio06 = AnuncioEntity(null, "Anuncio 06", "Anuncio Descrição 05", "4GB RAM - 1TB", null, null, BigDecimal.valueOf(1240), TiposDeUso.USADO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario03)
+        val anuncio06 = AnuncioEntity(null, "Anuncio 06", "Anuncio Descrição 05", "4GB RAM - 1TB", null, null, BigDecimal.valueOf(850), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario03)
+        val anuncio07 = AnuncioEntity(null, "Anuncio 07", "Anuncio Descrição 07", "1TB SSD", null, null, BigDecimal.valueOf(1240), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, usuarioTEST)
+        val anuncio08 = AnuncioEntity(null, "Anuncio 08", "Anuncio Descrição 08", "8GB RAM - 512MB", null, null, BigDecimal.valueOf(3500), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, usuarioTEST)
+        val anuncio09 = AnuncioEntity(null, "Anuncio 09", "Anuncio Descrição 09", "1GB RAM", null, null, BigDecimal.valueOf(210), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, usuarioTEST)
 
         val existsAnuncio01 = anuncioRepository.findByNomeAndUsuario("Anuncio 01", findUsuario01)
         if(!existsAnuncio01.isPresent) anuncios.add(anuncio01)
@@ -62,6 +65,12 @@ class StartApplication(
         if(!existsAnuncio05.isPresent) anuncios.add(anuncio05)
         val existsAnuncio06 = anuncioRepository.findByNomeAndUsuario("Anuncio 06", findUsuario03)
         if(!existsAnuncio06.isPresent) anuncios.add(anuncio06)
+        val existsAnuncio07 = anuncioRepository.findByNomeAndUsuario("Anuncio 07", usuarioTEST)
+        if(!existsAnuncio07.isPresent) anuncios.add(anuncio07)
+        val existsAnuncio08 = anuncioRepository.findByNomeAndUsuario("Anuncio 08", usuarioTEST)
+        if(!existsAnuncio08.isPresent) anuncios.add(anuncio08)
+        val existsAnuncio09 = anuncioRepository.findByNomeAndUsuario("Anuncio 09", usuarioTEST)
+        if(!existsAnuncio09.isPresent) anuncios.add(anuncio09)
         anuncioRepository.saveAll(anuncios)
     }
 

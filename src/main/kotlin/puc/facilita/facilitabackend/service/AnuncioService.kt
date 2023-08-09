@@ -108,4 +108,18 @@ class AnuncioService(
         return anuncios
     }
 
+    fun findByLocalizacaoNotMe(localizacao: String, id: Int): List<AnuncioEntity>? {
+        val usuarios = usuarioService.findByLocalizacao(localizacao)
+        if(usuarios.isEmpty()) return null
+        val anuncios = mutableListOf<AnuncioEntity>()
+        usuarios.forEach {
+            if(it.get().id != id ) {
+                val anunciosByUsuarioId = anuncioRepository.findByUsuarioId(it.get().id!!)
+                if(anunciosByUsuarioId.isNotEmpty())
+                    anuncios += anunciosByUsuarioId.map { it.get() }
+            }
+        }
+        return anuncios
+    }
+
 }
