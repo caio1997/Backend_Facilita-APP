@@ -27,6 +27,7 @@ class AnuncioController(private val anuncioService: AnuncioService) {
 
     @PostMapping("/save")
     fun save(@RequestBody anuncio: AnuncioEntity): ResponseEntity<AnuncioEntity> {
+        println("Anuncio Save - $anuncio")
         val responseSave = anuncioService.save(anuncio)
         return ResponseEntity.ok().body(responseSave)
     }
