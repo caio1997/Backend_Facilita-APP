@@ -69,11 +69,12 @@ class UsuarioService(
     }
 
     fun save(usuario: UsuarioEntity): UsuarioEntity {
+        usuario.email = usuario.email?.lowercase()
         return usuarioRepository.save(usuario)
     }
 
     fun login(email: String, senha: String): UsuarioDTO? {
-        val response = usuarioRepository.findByEmail(email)
+        val response = usuarioRepository.findByEmail(email.lowercase())
         if(!response.isPresent) return UsuarioDTO()
         val correct =  response.get().senha == senha && response.get().status == StatusCliente.ATIVO
         if(!correct) return UsuarioDTO()
@@ -85,7 +86,7 @@ class UsuarioService(
         if(findUsuario.isPresent) {
             val usuarioAtualizado = findUsuario.get()
             usuarioAtualizado.nome = usuario.nome
-            usuarioAtualizado.email = usuario.email
+            usuarioAtualizado.email = usuario.email?.lowercase()
             usuarioAtualizado.senha = usuario.senha
             usuarioAtualizado.telefone = usuario.telefone
             usuarioAtualizado.localizacao = usuario.localizacao
@@ -109,7 +110,7 @@ class UsuarioService(
     }
 
     fun findByEmail(email: String): Optional<UsuarioEntity>? {
-        val response = usuarioRepository.findByEmail(email)
+        val response = usuarioRepository.findByEmail(email.lowercase())
         if(response.isPresent)
             return response
         return null
