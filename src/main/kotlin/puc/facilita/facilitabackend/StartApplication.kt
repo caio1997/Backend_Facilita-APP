@@ -30,12 +30,6 @@ class StartApplication(
         if(!usuario02Exists.isPresent) usuarios.add(usuarioO2)
         val usuario03Exists = usuarioRepository.findByEmail("usuario_teste_03@hotmail.com")
         if(!usuario03Exists.isPresent) usuarios.add(usuarioO3)
-
-        // TESTE
-        val usuarioTEST = UsuarioEntity(null, "1", "1", "1", "(31)99155-1010", "Belo Horizonte - MG", LocalDateTime.now(), StatusCliente.ATIVO, null)
-        val usuarioTESTExists = usuarioRepository.findByEmail("1")
-        if(!usuarioTESTExists.isPresent) usuarios.add(usuarioTEST)
-
         usuarioRepository.saveAll(usuarios)
 
         val findUsuario01 = usuarioRepository.findByEmail("usuario_teste_01@hotmail.com").get()
@@ -49,9 +43,9 @@ class StartApplication(
         val anuncio04 = AnuncioEntity(null, "Anuncio 04", "Anuncio Descrição 04", "16GB RAM - 1TB SSD", null, null, BigDecimal.valueOf(5600), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario03)
         val anuncio05 = AnuncioEntity(null, "Anuncio 05", "Anuncio Descrição 05", "4GB RAM - 128GB", null, null, BigDecimal.valueOf(3500), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, findUsuario03)
         val anuncio06 = AnuncioEntity(null, "Anuncio 06", "Anuncio Descrição 05", "4GB RAM - 1TB", null, null, BigDecimal.valueOf(850), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario03)
-        val anuncio07 = AnuncioEntity(null, "Anuncio 07", "Anuncio Descrição 07", "1TB SSD", null, null, BigDecimal.valueOf(1240), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, usuarioTEST)
-        val anuncio08 = AnuncioEntity(null, "Anuncio 08", "Anuncio Descrição 08", "8GB RAM - 512MB", null, null, BigDecimal.valueOf(3500), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, usuarioTEST)
-        val anuncio09 = AnuncioEntity(null, "Anuncio 09", "Anuncio Descrição 09", "1GB RAM", null, null, BigDecimal.valueOf(210), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, usuarioTEST)
+        val anuncio07 = AnuncioEntity(null, "Anuncio 07", "Anuncio Descrição 07", "1TB SSD", null, null, BigDecimal.valueOf(1240), TiposDeUso.NOVO, TiposDeProdutos.NOTEBOOK, LocalDateTime.now(), null, findUsuario01)
+        val anuncio08 = AnuncioEntity(null, "Anuncio 08", "Anuncio Descrição 08", "8GB RAM - 512MB", null, null, BigDecimal.valueOf(3500), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, findUsuario03)
+        val anuncio09 = AnuncioEntity(null, "Anuncio 09", "Anuncio Descrição 09", "1GB RAM", null, null, BigDecimal.valueOf(210), TiposDeUso.USADO, TiposDeProdutos.CELULAR, LocalDateTime.now(), null, findUsuario03)
 
         val existsAnuncio01 = anuncioRepository.findByNomeAndUsuario("Anuncio 01", findUsuario01)
         if(!existsAnuncio01.isPresent) anuncios.add(anuncio01)
@@ -65,11 +59,11 @@ class StartApplication(
         if(!existsAnuncio05.isPresent) anuncios.add(anuncio05)
         val existsAnuncio06 = anuncioRepository.findByNomeAndUsuario("Anuncio 06", findUsuario03)
         if(!existsAnuncio06.isPresent) anuncios.add(anuncio06)
-        val existsAnuncio07 = anuncioRepository.findByNomeAndUsuario("Anuncio 07", usuarioTEST)
+        val existsAnuncio07 = anuncioRepository.findByNomeAndUsuario("Anuncio 07", findUsuario01)
         if(!existsAnuncio07.isPresent) anuncios.add(anuncio07)
-        val existsAnuncio08 = anuncioRepository.findByNomeAndUsuario("Anuncio 08", usuarioTEST)
+        val existsAnuncio08 = anuncioRepository.findByNomeAndUsuario("Anuncio 08", findUsuario03)
         if(!existsAnuncio08.isPresent) anuncios.add(anuncio08)
-        val existsAnuncio09 = anuncioRepository.findByNomeAndUsuario("Anuncio 09", usuarioTEST)
+        val existsAnuncio09 = anuncioRepository.findByNomeAndUsuario("Anuncio 09", findUsuario03)
         if(!existsAnuncio09.isPresent) anuncios.add(anuncio09)
         anuncioRepository.saveAll(anuncios)
     }
