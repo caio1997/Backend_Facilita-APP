@@ -19,7 +19,7 @@ data class AnuncioEntity (
     var nome: String,
 
     @Column(name = "descricao")
-    var descricao: String,
+    var descricao: String? = null,
 
     @Column(name = "capacidade")
     var capacidade: String? = null,

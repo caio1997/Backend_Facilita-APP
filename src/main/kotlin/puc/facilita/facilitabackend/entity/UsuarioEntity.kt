@@ -15,19 +15,19 @@ data class UsuarioEntity (
     val id: Int? = null,
 
     @Column(name = "email")
-    var email: String,
+    var email: String? = null,
 
     @Column(name = "senha")
-    var senha: String,
+    var senha: String? = null,
 
     @Column(name = "nome")
-    var nome: String,
+    var nome: String? = null,
 
     @Column(name = "telefone")
-    var telefone: String,
+    var telefone: String? = null,
 
     @Column(name = "localizacao")
-    var localizacao: String,
+    var localizacao: String? = null,
 
     @Column(name = "data_de_cadastro", columnDefinition = "timestamp")
     val dataDeCadastro: LocalDateTime? = LocalDateTime.now(),
