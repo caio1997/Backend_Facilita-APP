@@ -47,6 +47,7 @@ class AnuncioService(
     }
 
     fun save(anuncio: AnuncioEntity): AnuncioEntity {
+        anuncio.preco = anuncio.preco.setScale(2)
         return anuncioRepository.save(anuncio)
     }
 
